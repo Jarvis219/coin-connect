@@ -7,7 +7,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon --exec babel-node src/app.js",
 		"build": "babel src/ -d dist",
-		"serve": "nodemon --watch dist/ ./dist/app.js"
+		"serve": "nodemon --watch dist/ ./dist/app.js",
+		"start:pro": "babel src/ -d dist && nodemon --watch dist/ ./dist/app.js"
 	},
 	"author": "Quang",
 	"license": "ISC",

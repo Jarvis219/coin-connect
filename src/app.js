@@ -1,6 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import { verify } from './middleware/verify';
 require('babel-core/register');
 require('babel-polyfill');
 
@@ -9,7 +10,6 @@ dotenv.config();
 
 const server = require('http').Server(app);
 
-// Middleware
 app.use(express.json());
 app.use(
 	cors({
@@ -17,10 +17,9 @@ app.use(
 	})
 );
 
-// Router
 const coinRouters = require('./routes/coin');
 
-app.use('/api', coinRouters);
+app.use('/api', verify, coinRouters);
 
 const port = process.env.PORT || 8000;
 server.listen(port, () => {
