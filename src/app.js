@@ -18,7 +18,9 @@ app.use(
 );
 
 const coinRouters = require('./routes/coin');
+const smsRouters = require('./routes/sms');
 
+app.use('/api/', verify, smsRouters);
 app.use('/api', verify, coinRouters);
 
 const port = process.env.PORT || 8000;
